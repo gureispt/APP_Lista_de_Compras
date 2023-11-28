@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function App() {
+import ListaComprasTela from './telas/ListaComprasTela';
+import AdicionarItemTela from './telas/AdicionarItemTela';
+
+
+const Tab = createBottomTabNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Tab.Navigator 
+      
+      tabBarOptions={{ //estilização dos ícones
+          activeTintColor: 'blue', // Cor do ícone ativo
+          inactiveTintColor: 'gray', // Cor do ícone inativo
+          labelStyle: {
+            fontSize: 15,
+          },
+          style: {
+            backgroundColor: 'white', // Cor de fundo da barra de abas
+          },
+        }}
+      >
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        
+        <Tab.Screen name="Lista" component={ListaComprasTela} options={{
+            tabBarIcon: ({ color, size }) => 
+              (<Ionicons name="ios-list" size={size} color={color} />),}}/>
+
+        <Tab.Screen name="Carrinho" component={AdicionarItemTela} options={{ 
+            tabBarIcon:({color, size}) => 
+              (<Ionicons name="ios-cart" size={size} color={color} />),}}/>
+
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
