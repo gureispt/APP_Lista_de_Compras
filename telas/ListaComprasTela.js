@@ -5,7 +5,7 @@ const ListaComprasScreen = () => {
   return (
     <View style={styles.container}>
       <Text style ={styles.text}>Lista de Compras</Text>
-      {/* Adicione aqui a lógica para exibir a lista de compras */}
+      {/*aqui a lógica para exibir a lista de compras */}
     </View>
   );
 };
