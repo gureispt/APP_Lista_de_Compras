@@ -1,10 +1,30 @@
-import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import api from '../services/api';
+import React, { useState,  useEffect  } from 'react'
+
+
+
+
 
 const ListaComprasScreen = () => {
+
+  const [compras, setCompras] = useState([]);
+
+useEffect( () => {
+  
+  const listarCompras = async () => {
+    const response = await api.get();
+    setCompras(response.data);
+  }
+
+  listarCompras();
+}, []);
+
+
   return (
     <View style={styles.container}>
       <Text style ={styles.text}>Lista de Compras</Text>
+      <Text> {JSON.stringify(compras)} </Text>
       {/* Adicione aqui a lógica para exibir a lista de compras */}
     </View>
   );

@@ -3,8 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import ListaComprasTela from './telas/ListaComprasTela';
-import AdicionarItemTela from './telas/AdicionarItemTela';
+import ListaComprasTela from './pages/ListaComprasTela';
+import AdicionarItemTela from './pages/AdicionarItemTela';
+import Sobre from './pages/Sobre';
 
 
 const Tab = createBottomTabNavigator();
@@ -34,6 +35,10 @@ const App = () => {
         <Tab.Screen name="Carrinho" component={AdicionarItemTela} options={{ 
             tabBarIcon:({color, size}) => 
               (<Ionicons name="ios-cart" size={size} color={color} />),}}/>
+
+        <Tab.Screen name="Sobre" component={Sobre} options={{ 
+            tabBarIcon:({color, size}) => 
+              (<Ionicons name="information-circle" size={size} color={color} />),}}/>
 
       </Tab.Navigator>
     </NavigationContainer>
