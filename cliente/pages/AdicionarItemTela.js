@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Button, Text } from 'react-native';
 import api from '../services/api';
 
 const AdicionarItemScreen = () => {
@@ -7,17 +7,17 @@ const AdicionarItemScreen = () => {
   const [ultimoId, setUltimo] = useState(0);
   const [descricao, setDesc] = useState("");
   const [comprado, setComp] = useState(false);
-
+  
   useEffect( () => {
   
     const listarCompras = async () => {
-      const response = await api.get().catch(console.log);
+      const response = await api.get();
       response.data.sort((a, b) => b.id - a.id);
-      setUltimo(response.data[0].id);
+      setUltimo(response.data[0]?.id);
     }
   
     listarCompras();
-  }, []);
+  },[]);
 
   function adicionar(compra) {
     try{
@@ -26,10 +26,22 @@ const AdicionarItemScreen = () => {
       console.log(err);
     }
   }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Carrinho</Text>
-      {/*aqui a lógica para adicionar itens à lista */}
+      <TextInput
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, padding: 5 }}
+        placeholder="Digite algo..."
+        onChangeText={(value) => setDesc(value)}
+        value={descricao}
+      />
+      <Button
+        title="Enviar"
+        onPress={() => {
+          adicionar({id: ultimoId+1, descricao, comprado})
+          setUltimo(ultimoId+1)
+        }}
+      />
     </View>
   );
 };
