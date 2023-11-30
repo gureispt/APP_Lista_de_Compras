@@ -20,14 +20,16 @@ const compras = [];
 // CREATE 
 server.post('/compras' , (req, res) => {
     const compra = req.body;
-    console.log(req.body)
     compras.forEach(c => {
         if(c.id == compra.id){
             res.errored.message = "Já existe uma compra com esse id";
             return res.errored;
         } 
     })
-    compras.push(compra);
+    compra.forEach(c => {
+        compras.push(c);
+    })
+    
     return res.json(compras);
 });
 
@@ -36,7 +38,7 @@ server.get('/compras/:id', (req, res) => {
     const {id} = req.params;
 
     compras.forEach(compra => {
-        if(compra.id == id) return res.json(compra);
+        if(compras.indexOf(compra) == id) return res.json(compra);
     })
     return res.json();
     
@@ -49,20 +51,25 @@ server.get('/compras', (req, res) => {
 
 // UPDATE
 server.put('/compras/:id', (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const compra = req.body;
 
-    compras.forEach((c,i) => {
-        if(c.id == id){
-            compras[i] = compra
-            console.log(c)
-        } else {
-            res.errored.message = 'Compra não encontrada';
-            return res.errored;
+    let compraEncontrada = false;
+
+    compras.forEach((c, i) => {
+        if (c.id == id) {
+            compras[i] = compra;
+            compraEncontrada = true;
+            
         }
-    })
-    return res.json(compras);
+    });
+    if (!compraEncontrada) {
+        res.status(404).json({ message: 'Compra não encontrada' });
+    } else {
+        res.json(compras);
+    }
 });
+
 
 // DELETE
 server.delete('/compras/:id', (req, res) => {
@@ -70,14 +77,14 @@ server.delete('/compras/:id', (req, res) => {
     compras.forEach((c, i) => {
         if(c.id == id){
             compras.splice(i, 1);
-        } else {
-            res.errored.message = 'Compra não encontrada';
-            return res.errored;
+            compraEncontrada = true;
         }
     })
+    if (!compraEncontrada) {
+        res.status(404).json({ message: 'Compra não encontrada' });
+    } else {
+        res.json(compras);
+    }
     return res.json({message: 'O item foi deletado'});
-});
-
-
-
+}); 
 server.listen(3000, () => console.log("Servidor rodando!"));
