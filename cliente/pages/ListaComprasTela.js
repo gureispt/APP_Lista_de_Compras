@@ -1,29 +1,53 @@
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import api from "../services/api";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 const ListaComprasScreen = () => {
   const [compras, setCompras] = useState([]);
 
-  useEffect(() => {
-    const listarCompras = async () => {
-      const response = await api.get();
-      setCompras(response.data);
-    };
+  const listarCompras = async () => {
+    const response = await api.get();
+    setCompras(response.data);
+  };
 
-    listarCompras();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      listarCompras();
+    }, [])
+  );
+
+  const comprar = async (compra) => {
+    compra.comprado = true;
+    await api.put("/" + compra.id, compra).then((res) => listarCompras());
+  };
+
+  const Card = (compra) => {
+    return (
+      <View style={styles.card.body}>
+        <Text style={styles.card.title}>{compra.descricao}</Text>
+        <TouchableOpacity
+          style={styles.comprado}
+          onPress={() => comprar(compra)}
+        >
+          <Text style={{ color: "#fff", fontWeight: "bold" }}>Comprar</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Lista de Compras</Text>
-      {compras.map((compra) => (
-        <View style={styles.itemContainer} key={compra.id}>
-          <Text>Código: {compra.id}</Text>
-          <Text style={styles.itemId}> </Text>
-          <Text style={styles.itemDesc}>Descrição: {compra.descricao}</Text>
-        </View>
-      ))}
+      <ScrollView style={{width: '100%'}}>
+        {compras.map((compra) => (compra.comprado ? null : Card(compra)))}
+      </ScrollView>
     </View>
   );
 };
@@ -39,6 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginTop: 10,
+    marginBottom: 20,
   },
   itemContainer: {
     flexDirection: "row",
@@ -56,6 +81,33 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     fontFamily: "Arial",
+  },
+  comprado: {
+    backgroundColor: "#783ac9",
+    color: "#fff",
+    padding: 5,
+    borderRadius: 5,
+  },
+  card: {
+    body: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      backgroundColor: "#fff",
+      borderRadius: 8,
+      padding: 10,
+      margin: 8,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      elevation: 3,
+      width: "90%",
+      alignSelf: 'center',
+    },
+    title: {
+      fontWeight: "bold",
+      marginBottom: 8,
+    },
+    content: {},
   },
 });
 export default ListaComprasScreen;
