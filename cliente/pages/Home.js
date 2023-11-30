@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const AdicionarItemScreen = () => {
+const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Carrinho</Text>
-      {/*aqui a lógica para adicionar itens à lista */}
+      <Text style ={styles.text}>Seja Bem-Vindo!</Text>
+      {/* Text, Text Input, Button, Pressable, Touchble Opacity, Switch, Slider, Picker, Flat List 
+      alguns desses(conter) */}
     </View>
   );
 };
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -22,4 +24,4 @@ const styles = StyleSheet.create({
       marginTop: 10
     },
   });
-export default AdicionarItemScreen;
+export default HomeScreen;
