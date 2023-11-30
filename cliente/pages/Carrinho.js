@@ -30,7 +30,8 @@ const AdicionarItemScreen = () => {
   return (
     <View style={styles.container}>
       <TextInput 
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, marginTop: 300,padding: 5 }}
+        style={{ height: 40, borderColor: 'black', borderWidth: 1, 
+        borderRadius: 10, margin: 10, marginTop: 300,padding: 5 }}
         placeholder="Digite um produto"
         onChangeText={(value) => setDesc(value)}
         value={descricao}
