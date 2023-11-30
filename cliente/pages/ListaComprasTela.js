@@ -17,11 +17,15 @@ useEffect( () => {
 }, []);
 
 
+
   return (
     <View style={styles.container}>
-      <Text style ={styles.text}>Lista de Compras</Text>
-      <Text> {JSON.stringify(compras)} </Text>
-      {/* Adicione aqui a lógica para exibir a lista de compras */}
+      <Text style={styles.text}>Lista de Compras</Text>
+      {compras.map(compra => (
+        <View style = {styles.itemContainer} key={compra.id}>Código: {compra.id}
+        <Text style={styles.itemId}> </Text>
+        <Text style={styles.itemDesc}>Descrição: {compra.descricao}</Text></View>
+      ))}
     </View>
   );
 };
@@ -31,12 +35,30 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'start',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: '#add8e6',
+      
     },
     text: {
       fontSize: 20,
       fontWeight: 'bold',
-      marginTop: 10
+      marginTop: 10,
     },
+    itemContainer:{
+      flexDirection: "row",
+      alignItems: "start",
+      justifyContent: "flex-start",
+      padding: 7,
+      fontSize: 16,
+      fontWeight: "bold",
+      fontFamily: "Arial"
+    },
+    itemId: {
+      marginRight: 10,
+    },
+    itemDesc: {
+      fontSize: 16,
+      fontWeight: "bold",
+      fontFamily: "Arial",
+    }
   });
 export default ListaComprasScreen;

@@ -5,7 +5,8 @@ const SobreScreen = () => {
   return (
     <View style={styles.container}>
         <Text style={styles.text}>
-            Esse projeto foi densenvolvido por Gustavo Fernandes Reis e Caio Rodrigo  
+            Esse projeto foi densenvolvido por Gustavo Fernandes Reis e Caio Rodrigo  para 
+            avaliação de P2 em Dispositivos Móveis.
         </Text>
       {/* Adicione aqui a lógica para exibir a lista de compras */}
     </View>
@@ -23,8 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'Times New Roman',
     margin: 10,
-    alignItems: 'center',
-
+    textAlign: "center",
   },
 });
 

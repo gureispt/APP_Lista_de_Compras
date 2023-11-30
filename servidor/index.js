@@ -20,15 +20,9 @@ const compras = [];
 // CREATE 
 server.post('/compras' , (req, res) => {
     const compra = req.body;
-    compras.forEach(c => {
-        if(c.id == compra.id){
-            res.errored.message = "Já existe uma compra com esse id";
-            return res.errored;
-        } 
-    })
-    compra.forEach(c => {
-        compras.push(c);
-    })
+        let id = compras.length+1;
+        compra.id = id
+        compras.push(compra);
     
     return res.json(compras);
 });
@@ -74,6 +68,7 @@ server.put('/compras/:id', (req, res) => {
 // DELETE
 server.delete('/compras/:id', (req, res) => {
     const {id} = req.params
+    compraEncontrada = false
     compras.forEach((c, i) => {
         if(c.id == id){
             compras.splice(i, 1);
@@ -86,5 +81,5 @@ server.delete('/compras/:id', (req, res) => {
         res.json(compras);
     }
     return res.json({message: 'O item foi deletado'});
-}); 
+});
 server.listen(3000, () => console.log("Servidor rodando!"));
