@@ -2,10 +2,6 @@ import { View, Text, StyleSheet } from 'react-native';
 import api from '../services/api';
 import React, { useState,  useEffect  } from 'react'
 
-
-
-
-
 const ListaComprasScreen = () => {
 
   const [compras, setCompras] = useState([]);
