@@ -7,7 +7,7 @@ const Login = () => {
         <Text style={styles.text}>
             
         </Text>
-      {/* Adicione aqui a lógica para exibir a lista de compras */}
+      {/* aqui a lógica do login */}
     </View>
   );
 };
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "start",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "#add8e6",
   },
   text: {
     fontSize: 20,

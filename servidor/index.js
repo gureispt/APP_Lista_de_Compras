@@ -23,19 +23,16 @@ server.post('/compras' , (req, res) => {
         let id = compras.length+1;
         compra.id = id
         compras.push(compra);
-    
     return res.json(compras);
 });
 
 // GET para uma compra
 server.get('/compras/:id', (req, res) => {
     const {id} = req.params;
-
     compras.forEach(compra => {
         if(compras.indexOf(compra) == id) return res.json(compra);
     })
     return res.json();
-    
 });
 
 // GET para todos os compras
@@ -49,7 +46,6 @@ server.put('/compras/:id', (req, res) => {
     const compra = req.body;
 
     let compraEncontrada = false;
-
     compras.forEach((c, i) => {
         if (c.id == id) {
             compras[i] = compra;
@@ -63,7 +59,6 @@ server.put('/compras/:id', (req, res) => {
         res.json(compras);
     }
 });
-
 
 // DELETE
 server.delete('/compras/:id', (req, res) => {

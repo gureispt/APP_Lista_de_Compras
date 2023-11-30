@@ -16,8 +16,6 @@ useEffect( () => {
   listarCompras();
 }, []);
 
-
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Lista de Compras</Text>

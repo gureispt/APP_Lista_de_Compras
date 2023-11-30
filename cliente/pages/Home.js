@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
       justifyContent: 'start',
       alignItems: 'center',
       backgroundColor: '#F5FCFF',
+      
     },
     text: {
       fontSize: 20,
       fontWeight: 'bold',
-      marginTop: 10
+      marginTop: 50
     },
   });
 export default HomeScreen;

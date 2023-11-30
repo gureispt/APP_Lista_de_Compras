@@ -29,9 +29,9 @@ const AdicionarItemScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, padding: 5 }}
-        placeholder="Digite algo..."
+      <TextInput 
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 10, marginTop: 300,padding: 5 }}
+        placeholder="Digite um produto"
         onChangeText={(value) => setDesc(value)}
         value={descricao}
       />
@@ -50,12 +50,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'start',
       alignItems: 'center',
-      backgroundColor: '#add8e6',
-    },
-    text: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginTop: 10
-    },
+      backgroundColor: '#add8e6', 
+    }
   });
 export default AdicionarItemScreen;
