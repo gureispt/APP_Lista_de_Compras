@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const server = express();
 
-server.use(express.json(), cors());
+server.use(cors({origin: '**'}), express.json());
 /*
     Estrutura das compras
     {

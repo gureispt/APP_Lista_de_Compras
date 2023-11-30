@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import ListaComprasTela from './pages/ListaComprasTela';
+import ListaComprasScreen from './pages/ListaComprasTela';
 import AdicionarItemTela from './pages/AdicionarItemTela';
 import Sobre from './pages/Sobre';
 
@@ -28,7 +28,7 @@ const App = () => {
       >
 
         
-        <Tab.Screen name="Lista" component={ListaComprasTela} options={{
+        <Tab.Screen name="Lista" component={ListaComprasScreen} options={{
             tabBarIcon: ({ color, size }) => 
               (<Ionicons name="ios-list" size={size} color={color} />),}}/>
 
