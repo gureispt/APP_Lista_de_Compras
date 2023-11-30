@@ -30,7 +30,7 @@ const ListaComprasScreen = () => {
 
   const Card = (compra) => {
     return (
-      <View style={styles.card.body}>
+      <View style={styles.card.body} key={compra.id}>
         <Text style={styles.card.title}>{compra.descricao}</Text>
         <TouchableOpacity
           style={styles.comprado}
