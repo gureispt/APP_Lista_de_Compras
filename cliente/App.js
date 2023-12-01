@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import ListaComprasScreen from "./pages/ListaComprasTela";
 import Carrinho from "./pages/Carrinho";
 import Sobre from "./pages/Sobre";
+import Editar from "./pages/Editar";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,15 +17,16 @@ const App = () => {
     return (
       <NavigationContainer>
         <Tab.Navigator
-          tabBarOptions={{
+          screenOptions={{
             //estilização do texto dos ícones
-            activeTintColor: "blue", // cor do ícone ativo
-            inactiveTintColor: "gray", // cor do ícone inativo
-            labelStyle: {
+
+            tabBarActiveTintColor: "blue", // cor do ícone ativo
+            tabBarInactiveTintColor: "gray", // cor do ícone inativo
+            tabBarLabelStyle: {
               fontSize: 15,
               fontWeight: "bold",
             },
-            style: {
+            tabBarStyle: {
               backgroundColor: "white", // cor de fundo da barra de abas
             },
           }}
@@ -68,11 +70,19 @@ const App = () => {
               ),
             }}
           />
+          <Tab.Screen
+            name="Editar"
+            component={Editar}
+            options={{
+             tabBarButton: ()=> null
+            }}
+          />
         </Tab.Navigator>
+
       </NavigationContainer>
     );
   } else {
-    return (Login);
+    return <Login />;
   }
 };
 

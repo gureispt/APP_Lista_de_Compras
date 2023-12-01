@@ -4,14 +4,12 @@ import { View, Text, StyleSheet, Image} from 'react-native';
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style ={styles.text}>Essa é a tela inicial</Text>
-
         <Image source={require('../assets/sacola.jpg')} 
         style={{ 
           height: 200, 
           width: 200, 
           margin: 10,
-          marginTop: 150,
+          marginTop: 230,
           borderRadius: 200,
           }}/>
     </View>
@@ -30,7 +28,6 @@ const styles = StyleSheet.create({
       fontSize: 30,
       fontWeight: 'bold',
       fontFamily: 'Times New Roman',
-      marginTop: 50,
     },
   });
 export default HomeScreen;
