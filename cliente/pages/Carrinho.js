@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import api from "../services/api";
 import { Ionicons } from "@expo/vector-icons";
-import { useFocusEffect,useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 const AdicionarItemScreen = () => {
   const [ultimoId, setUltimo] = useState(0);
@@ -42,20 +42,19 @@ const AdicionarItemScreen = () => {
     }
   };
 
-
   const apagar = (compra) => {
     try {
-      api.delete("/"+compra.id).then(() => listarCompras());
+      api.delete("/" + compra.id).then(() => listarCompras());
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   const navigation = useNavigation();
 
   const editar = (compra) => {
-    navigation.navigate('Editar', compra);
-  }
+    navigation.navigate("Editar", compra);
+  };
 
   const renderCompra = (compra) => {
     let textdec = "",
@@ -75,7 +74,7 @@ const AdicionarItemScreen = () => {
           width: "100%",
           alignSelf: "center",
           marginBottom: 10,
-          backgroundColor: bg
+          backgroundColor: bg,
         }}
       >
         <Text style={{ textDecorationLine: textdec, fontSize: 18, flex: 4 }}>
@@ -86,13 +85,21 @@ const AdicionarItemScreen = () => {
             flexDirection: "row",
             flex: 1,
             justifyContent: "space-between",
-            gap: 10
+            gap: 10,
           }}
         >
           <TouchableOpacity style={styles.actionEdit}>
-            <Ionicons name="pencil" size={25} color={"#fff"} onPress={() => editar(compra)}/>
+            <Ionicons
+              name="pencil"
+              size={25}
+              color={"#fff"}
+              onPress={() => editar(compra)}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionDelete} onPress={() => apagar(compra)}>
+          <TouchableOpacity
+            style={styles.actionDelete}
+            onPress={() => apagar(compra)}
+          >
             <Ionicons name="trash" size={25} color={"#fff"} />
           </TouchableOpacity>
         </View>

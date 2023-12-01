@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
 
 const HomeScreen = () => {
   return (
@@ -9,7 +10,7 @@ const HomeScreen = () => {
           height: 200, 
           width: 200, 
           margin: 10,
-          marginTop: 230,
+          marginTop: 50,
           borderRadius: 200,
           }}/>
     </View>
@@ -19,12 +20,12 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'start',
+      justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#1564C0',
+      backgroundColor: '#1564BF',
     },
     text: {
-      color: 'white',
+      marginBottom: 70,
       fontSize: 30,
       fontWeight: 'bold',
       fontFamily: 'Times New Roman',
