@@ -72,7 +72,7 @@ const App = () => {
       </NavigationContainer>
     );
   } else {
-    return 
+    return (Login);
   }
 };
 
