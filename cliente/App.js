@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import ListaComprasScreen from "./pages/ListaComprasTela";
+import ListaCompras from "./pages/ListaCompras";
 import Carrinho from "./pages/Carrinho";
 import Sobre from "./pages/Sobre";
 import Editar from "./pages/Editar";
@@ -43,7 +43,7 @@ const App = () => {
 
           <Tab.Screen
             name="Lista"
-            component={ListaComprasScreen}
+            component={ListaCompras}
             options={{
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="ios-list" size={size} color={color} />
@@ -74,11 +74,10 @@ const App = () => {
             name="Editar"
             component={Editar}
             options={{
-             tabBarButton: ()=> null
+              tabBarButton: () => null,
             }}
           />
         </Tab.Navigator>
-
       </NavigationContainer>
     );
   } else {

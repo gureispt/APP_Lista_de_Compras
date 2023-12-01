@@ -35,7 +35,7 @@ server.get('/compras/:id', (req, res) => {
     return res.json();
 });
 
-// GET para todos os compras
+// GET para todas as compras
 server.get('/compras', (req, res) => {
     return res.json(compras);
 });

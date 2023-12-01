@@ -9,7 +9,7 @@ import api from "../services/api";
 import React, { useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
-const ListaComprasScreen = () => {
+const ListaCompras = () => {
   const [compras, setCompras] = useState([]);
 
   const listarCompras = async () => {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "start",
     alignItems: "center",
-    backgroundColor: "#add8e6",
+    backgroundColor: 'white',
   },
   text: {
     fontSize: 20,
@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
     content: {},
   },
 });
-export default ListaComprasScreen;
+export default ListaCompras;

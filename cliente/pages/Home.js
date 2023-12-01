@@ -2,17 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 
-const HomeScreen = () => {
+const Home = () => {
   return (
     <View style={styles.container}>
-        <Image source={require('../assets/sacola.jpg')} 
-        style={{ 
-          height: 200, 
-          width: 200, 
-          margin: 10,
-          marginTop: 50,
-          borderRadius: 200,
-          }}/>
+         <Text style ={styles.text}>Essa é a tela inicial</Text>
+
+        <Image source={{uri: 'https://i.pinimg.com/originals/e7/31/3c/e7313cf4e2648d7170a034bdfe99894e.gif'}}  
+        style={{marginRight: 50, width: 350, height:275}}/>
     </View>
   );
 };
@@ -22,7 +18,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#1564BF',
+      backgroundColor: 'white',
     },
     text: {
       marginBottom: 70,
@@ -31,4 +27,4 @@ const styles = StyleSheet.create({
       fontFamily: 'Times New Roman',
     },
   });
-export default HomeScreen;
+export default Home;
