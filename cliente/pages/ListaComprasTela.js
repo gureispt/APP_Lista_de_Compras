@@ -55,9 +55,9 @@ const ListaComprasScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "start",
-    alignItems: "center",
-    backgroundColor: "#add8e6",
+    justifyContent: 'start',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
   text: {
     fontSize: 20,
