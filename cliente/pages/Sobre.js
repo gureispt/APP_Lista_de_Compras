@@ -1,9 +1,20 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import App from "../Login";
 
 const SobreScreen = () => {
+  
+  const logout = async () => {
+    await AsyncStorage.removeItem('logado').then(()=>{
+      return <App/>;
+    })
+  }
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => logout()} style={styles.logoutButton}>
+      <Text style={{color: '#fff'}}>Logout</Text>
+    </TouchableOpacity>
         <Text style={styles.text}>
             Esse projeto foi densenvolvido por Gustavo Fernandes Reis e Caio Rodrigo de Oliveira para 
             avaliação de P2 em Dispositivos Móveis.
@@ -26,6 +37,15 @@ const styles = StyleSheet.create({
     fontFamily: 'Times New Roman',
     margin: 10,
     textAlign: "center",
+  },
+  logoutButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: 'red',
+    color: '#fff',
+    borderRadius: 5,
+    alignSelf: 'flex-end',
+    marginRight: 20
   },
 });
 

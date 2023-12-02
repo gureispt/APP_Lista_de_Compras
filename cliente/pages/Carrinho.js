@@ -32,13 +32,15 @@ const AdicionarItemScreen = () => {
   );
 
   const adicionar = (compra) => {
-    try {
-      api.post("", compra).then(() => {
-        listarCompras();
-        setDesc("");
-      });
-    } catch (err) {
-      console.log(err);
+    if (compra.descricao.length > 1 && compra.descricao != "" && compra.descricao != null) {
+      try {
+        api.post("", compra).then(() => {
+          listarCompras();
+          setDesc("");
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -51,10 +53,6 @@ const AdicionarItemScreen = () => {
   };
 
   const navigation = useNavigation();
-
-  const editar = (compra) => {
-    navigation.navigate("Editar", compra);
-  };
 
   const renderCompra = (compra) => {
     let textdec = "",
@@ -77,25 +75,15 @@ const AdicionarItemScreen = () => {
           backgroundColor: bg,
         }}
       >
-        <Text style={{ textDecorationLine: textdec, fontSize: 18, flex: 4 }}>
+        <Text style={{ textDecorationLine: textdec, fontSize: 18, flex: 1 }}>
           {compra.descricao}
         </Text>
         <View
           style={{
             flexDirection: "row",
-            flex: 1,
             justifyContent: "space-between",
-            gap: 10,
           }}
         >
-          <TouchableOpacity style={styles.actionEdit}>
-            <Ionicons
-              name="pencil"
-              size={25}
-              color={"#fff"}
-              onPress={() => editar(compra)}
-            />
-          </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionDelete}
             onPress={() => apagar(compra)}
@@ -156,10 +144,6 @@ const styles = StyleSheet.create({
   },
   actionDelete: {
     backgroundColor: "red",
-    borderRadius: 3,
-  },
-  actionEdit: {
-    backgroundColor: "gray",
     borderRadius: 3,
   },
 });

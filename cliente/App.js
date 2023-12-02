@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { useFocusEffect } from "@react-navigation/native";
 
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./Login";
 import ListaCompras from "./pages/ListaCompras";
 import Carrinho from "./pages/Carrinho";
 import Sobre from "./pages/Sobre";
-import Editar from "./pages/Editar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Tab = createBottomTabNavigator();
-
 const App = () => {
-  if (true) {
+  const [logado, setLogado] = useState(false);
+
+  const verificaLogado = async () => {
+    const log = await AsyncStorage.getItem("logado");
+    if(log) setLogado('logado');
+    else setLogado('deslogado')
+  };
+
+  useEffect( () => {
+    verificaLogado();
+  }, [])
+  // useFocusEffect(React.useCallback(() => {
+  //   // verificaLogado();
+  // }, []));
+
+  if (logado == 'logado') {
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -71,17 +87,20 @@ const App = () => {
             }}
           />
           <Tab.Screen
-            name="Editar"
-            component={Editar}
+            name="Login"
+            component={Login}
             options={{
               tabBarButton: () => null,
+              tabBarStyle: {'display': 'none'}
             }}
           />
+
+        
         </Tab.Navigator>
       </NavigationContainer>
     );
   } else {
-    return <Login />;
+    return <Login/>;
   }
 };
 

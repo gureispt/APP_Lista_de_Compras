@@ -13,11 +13,30 @@ server.use(bodyParser.json());
         descricao: string
         comprado: boolean
     }
+    Estrutura das usuarios
+    {
+        username: 'caiooliveira',
+        senha: 'caio123'
+    }
 */
 
 const compras = [];
+const usuarios = [
+    {username: 'caiooliveira', senha: 'caio123'},
+    {username: 'gustavoreis', senha: 'gustavo123 '}
+];
 
-// CREATE 
+
+//LOGIN
+server.post('/compras/login', (req, res) => {
+    const login = req.body;
+    usuarios.forEach(user => {
+        if(login.username == user.username && login.senha == user.senha) return res.json(user)
+    })
+    res.status(404).json({ message: 'Usuario não encontrado' });
+})
+
+// Criar
 server.post('/compras' , (req, res) => {
     const compra = req.body;
         let id = compras.length+1;
@@ -40,7 +59,7 @@ server.get('/compras', (req, res) => {
     return res.json(compras);
 });
 
-// UPDATE
+// Atualizar
 server.put('/compras/:id', (req, res) => {
     const { id } = req.params;
     const compra = req.body;
@@ -60,7 +79,7 @@ server.put('/compras/:id', (req, res) => {
     }
 });
 
-// DELETE
+// Remover
 server.delete('/compras/:id', (req, res) => {
     const {id} = req.params
     compraEncontrada = false
